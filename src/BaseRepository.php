@@ -108,11 +108,12 @@ class BaseRepository implements BaseRepositoryInterface
 
     /**
      * @param array $data
+     * @param array $options
      * @return mixed
      */
-    public function findOneBy(array $data)
+    public function findOneBy(array $data, array $options = [])
     {
-        return $this->model->where($data)->first();
+        return $this->model->select(@$options['select'] ?? "*")->where($data)->first();
     }
 
     /**
