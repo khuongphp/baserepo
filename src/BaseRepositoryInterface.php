@@ -50,9 +50,10 @@ interface BaseRepositoryInterface
 
     /**
      * @param array $data
+     * @param array $options
      * @return mixed
      */
-    public function findOneBy(array $data);
+    public function findOneBy(array $data, array $options = []);
 
     /**
      * @param array $data
