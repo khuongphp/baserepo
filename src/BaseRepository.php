@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Input;
 use League\Fractal\Manager;
 use League\Fractal\Pagination\Cursor;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;;
@@ -144,7 +143,7 @@ class BaseRepository implements BaseRepositoryInterface
      */
     public function paginateArrayResults(array $data, int $perPage = 50)
     {
-        $page = Input::get('page', 1);
+        $page = request()->get('page', 1);
         $offset = ($page * $perPage) - $perPage;
 
         return new LengthAwarePaginator(
